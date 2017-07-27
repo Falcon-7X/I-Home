@@ -1,0 +1,20 @@
+<div class="pull-right">
+  <%= link_to("Add a event", new_event_path, :class => "btn btn-default" ) %>
+</div>
+
+<table class="table table-bordered">
+  <% @events.each do |event| %>
+  <tr>
+    <td>
+      <%= link_to(event.title, event_path(event)) %>
+    </td>
+    <td>
+      <%= link_to("Edit", edit_event_path(event)) %> |
+      <%= link_to("Destroy", event_path(event), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
+    </td>
+    <td>
+      <%= event.created_at %>
+    </td>
+  </tr>
+  <% end %>
+</table>
