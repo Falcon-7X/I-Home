@@ -1,0 +1,10 @@
+<h1> Add a event </h1>
+
+<%= simple_form_for [:admin,@event] do |f| %>
+
+<%= f.input :title %>
+<%= f.input :description %>
+<%= f.input :endtime %>
+
+  <%= f.submit "Submit" %>
+<% end %>

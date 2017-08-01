@@ -1,0 +1,24 @@
+<h2>这是后台</h2>
+
+<div class="pull-right">
+  <%= link_to("Add a event", new_admin_event_path, :class => "btn btn-default" ) %>
+</div>
+
+<br><br>
+
+<table class="table table-bordered">
+  <% @events.each do |event| %>
+  <tr>
+    <td>
+      <%= link_to(event.title, admin_event_path(event)) %>
+    </td>
+    <td>
+      <%= link_to("Edit", edit_admin_event_path(event)) %>
+      <%= link_to("Destroy", admin_event_path(event), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
+    </td>
+    <td>
+      <%= event.created_at %>
+    </td>
+  </tr>
+  <% end %>
+</table>
