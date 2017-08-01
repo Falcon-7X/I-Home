@@ -16,6 +16,12 @@
     <td>
       <%= link_to("Edit", edit_admin_event_path(event)) %>
       <%= link_to("Destroy", admin_event_path(event), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
+
+      <% if event.is_hidden %>
+        <%= link_to("显示", publish_admin_event_path(event), :method => :post, :class => "btn btn-xs btn-success") %>
+      <% else %>
+        <%= link_to("隐藏", hide_admin_event_path(event), :method => :post, :class => "btn btn-xs btn-danger") %>
+      <% end %>
     </td>
     <td>
       <%= event.created_at %>

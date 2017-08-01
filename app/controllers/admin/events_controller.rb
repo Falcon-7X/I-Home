@@ -47,6 +47,18 @@ class Admin::EventsController < ApplicationController
     redirect_to admin_events_path
   end
 
+  def publish
+    @event = Event.find(params[:id])
+    @event.publish!
+    redirect_to :back
+  end
+
+  def hide
+    @event = Event.find(params[:id])
+    @event.hide!
+    redirect_to :back
+  end
+
   private
 
   def event_params

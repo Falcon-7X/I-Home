@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   resources :events
 
   namespace :admin do
-    resources :events
+    resources :events do
+      member do
+        post :publish
+        post :hide
+      end
+    end
   end
 end

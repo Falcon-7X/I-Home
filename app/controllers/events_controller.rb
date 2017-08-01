@@ -6,6 +6,11 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+
+    if @event.is_hidden
+      flash[:warning] = "This events already archived"
+      redirect_to root_path
+    end
   end
 
   def new
