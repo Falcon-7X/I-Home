@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+create_account = User.create([email: 'fengkai@sina.com', password: '111111', password_confirmation: '111111', is_admin: 'true'])
+puts "Admin account created."
