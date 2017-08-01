@@ -7,7 +7,7 @@ class Admin::EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    @events = Event.order("created_at DESC")
   end
 
   def new
@@ -49,6 +49,6 @@ class Admin::EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :description, :endtime)
+    params.require(:event).permit(:title, :description, :endtime, :is_hidden)
   end
 end

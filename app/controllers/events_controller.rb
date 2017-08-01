@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
   def index
-    @events = Event.all
+    @events = Event.where(:is_hidden => false).order("created_at DESC")
   end
 
   def show
@@ -46,6 +46,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :description, :endtime)
+    params.require(:event).permit(:title, :description, :endtime, :is_hidden)
   end
 end
