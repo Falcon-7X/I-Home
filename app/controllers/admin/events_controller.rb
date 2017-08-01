@@ -1,5 +1,6 @@
 class Admin::EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
+  before_action :require_is_admin
 
   def show
     @event = Event.find(params[:id])
@@ -44,8 +45,6 @@ class Admin::EventsController < ApplicationController
 
     redirect_to admin_events_path
   end
-
-  private
 
   private
 
