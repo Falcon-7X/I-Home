@@ -13,4 +13,9 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  namespace :account do
+    resources :events
+  end
+
 end
