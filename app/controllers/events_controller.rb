@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
+  before_action :find_event_and_check_permission, only: [:edit, :update, :destroy]
+
   def index
     @events = Event.where(:is_hidden => false).order("created_at DESC")
   end
@@ -29,11 +31,11 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])
+    find_event_and_check_permission
   end
 
   def update
-    @event = Event.find(params[:id])
+    find_event_and_check_permission
     if @event.update(event_params)
       redirect_to events_path
     else
@@ -42,7 +44,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event = Event.find(params[:id])
+    find_event_and_check_permission
 
     @event.destroy
 
@@ -50,6 +52,15 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def find_event_and_check_permission
+  @event = Event.find(params[:id])
+
+    if current_user != @event.user
+      redirect_to root_path, alert: "You have no permission"
+    end
+  end
+
 
   def event_params
     params.require(:event).permit(:title, :description, :endtime, :is_hidden)

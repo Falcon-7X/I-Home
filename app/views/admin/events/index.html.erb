@@ -14,6 +14,9 @@
       <%= link_to(event.title, admin_event_path(event)) %>
     </td>
     <td>
+      <%= event.user.email %>
+    </td>
+    <td>
       <%= link_to("Edit", edit_admin_event_path(event)) %>
       <%= link_to("Destroy", admin_event_path(event), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
 
