@@ -15,7 +15,12 @@ Rails.application.routes.draw do
   end
 
   namespace :account do
-    resources :events
+    resources :events do
+      member do
+        post :publish
+        post :hide 
+      end
+    end
   end
 
 end

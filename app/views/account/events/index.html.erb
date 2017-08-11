@@ -1,3 +1,7 @@
+<div class="pull-right">
+  <%= link_to("Add a event", new_event_path, :class => "btn btn-default" ) %>
+</div>
+
 <div class="col-md-12">
 
   <h2 class="text-center"> 我创建的事件 </h2>
@@ -8,15 +12,34 @@
         <th> # </th>
         <th> 事件名称 </th>
         <th> 创建时间 </th>
+        <th> 执行动作 </th>
       </tr>
     </thead>
 
     <tbody>
       <% @events.each do |event| %>
         <tr>
-          <td> # </td>
-          <td> <%= link_to(event.title, event_path(event)) %> </td>
-          <td> <%= event.created_at %> </td>
+          <td>
+            <%= render_account_event_status(event) %>
+            <%= link_to(event.title, account_event_path(event)) %>
+          </td>
+          <td>
+            <% if current_user && current_user == event.user %>
+              <%= link_to("编辑", edit_account_event_path(event)) %> |
+              <%= link_to("删除", account_event_path(event), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
+
+              <% if event.is_hidden %>
+                <%= link_to("显示", publish_account_event_path(event), :method => :post, :class => "btn btn-xs btn-success") %>
+              <% else %>
+                <%= link_to("隐藏", hide_account_event_path(event), :method => :post, :class => "btn btn-xs btn-danger") %>
+              <% end %>
+
+            <% end %>
+          </td>
+
+          <td>
+            <%= event.created_at %>
+          </td>
         </tr>
       <% end %>
     </tbody>
