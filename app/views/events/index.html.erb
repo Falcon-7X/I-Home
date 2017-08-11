@@ -3,21 +3,37 @@
 </div>
 
 <table class="table table-bordered">
-  <% @events.each do |event| %>
-  <tr>
-    <td>
-      <%= link_to(event.title, event_path(event)) %>
-    </td>
-    <td>
-      <%= event.user.email %>
-    </td>
-    <td>
-      <%= link_to("Edit", edit_event_path(event)) %> |
-      <%= link_to("Destroy", event_path(event), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
-    </td>
-    <td>
-      <%= event.created_at %>
-    </td>
-  </tr>
-  <% end %>
+  <thead>
+    <th>#</th>
+    <th>事件名称</th>
+    <th>创建者</th>
+    <th>动作</th>
+    <th>创建时间</th>
+  </thead>
+
+  <tbody>
+    <% @events.each do |event| %>
+    <tr>
+      <th>#</th>
+      <td>
+        <%= link_to(event.title, event_path(event)) %>
+      </td>
+      <td>
+        <%= event.user.email %>
+      </td>
+      <% if current_user && current_user == event.user %>
+        <td>
+          <%= link_to("Edit", edit_event_path(event)) %> |
+          <%= link_to("Destroy", event_path(event), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
+        </td>
+      <% else %>
+         <td>／</td>
+      <% end %>
+      <td>
+        <%= event.created_at %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+
 </table>
