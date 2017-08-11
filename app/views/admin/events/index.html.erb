@@ -1,7 +1,7 @@
-<h2>事件清单管理--后台</h2>
+<h2>事件管理--管理员</h2>
 
 <div class="pull-right">
-  <%= link_to("Add a event", new_admin_event_path, :class => "btn btn-default" ) %>
+  <%= link_to("增加一个事件", new_admin_event_path, :class => "btn btn-default" ) %>
 </div>
 
 <br><br>
@@ -17,8 +17,8 @@
       <%= event.user.email %>
     </td>
     <td>
-      <%= link_to("Edit", edit_admin_event_path(event)) %>
-      <%= link_to("Destroy", admin_event_path(event), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
+      <%= link_to("编辑", edit_admin_event_path(event)) %>
+      <%= link_to("删除", admin_event_path(event), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
 
       <% if event.is_hidden %>
         <%= link_to("显示", publish_admin_event_path(event), :method => :post, :class => "btn btn-xs btn-success") %>

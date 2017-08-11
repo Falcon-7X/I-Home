@@ -1,5 +1,5 @@
 <div class="pull-right">
-  <%= link_to("Add a event", new_event_path, :class => "btn btn-default" ) %>
+  <%= link_to("增加一个事件", new_event_path, :class => "btn btn-primary" ) %>
 </div>
 
 <table class="table table-bordered">
@@ -7,7 +7,6 @@
     <th>#</th>
     <th>事件名称</th>
     <th>创建者</th>
-    <th>动作</th>
     <th>创建时间</th>
   </thead>
 
@@ -21,19 +20,10 @@
       <td>
         <%= event.user.email %>
       </td>
-      <% if current_user && current_user == event.user %>
-        <td>
-          <%= link_to("Edit", edit_event_path(event)) %> |
-          <%= link_to("Destroy", event_path(event), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
-        </td>
-      <% else %>
-         <td>／</td>
-      <% end %>
       <td>
         <%= event.created_at %>
       </td>
     </tr>
     <% end %>
   </tbody>
-
 </table>
