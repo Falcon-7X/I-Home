@@ -1,8 +1,21 @@
-<div class="pull-right">
-  <%= link_to("新增一个事件", new_event_path, :class => "btn btn-primary" ) %>
-</div>
+
 
 <div class="col-md-12">
+  <div class="pull-right">
+    <%= link_to("新增一个事件", new_event_path, :class => "btn btn-primary" ) %>
+  </div>
+  
+  <div class="dropdown clearfix pull-right">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      排序
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
+        <li>
+          <%= link_to("按照发表时间排序", account_events_path ) %>
+        </li>
+    </ul>
+  </div>
 
   <h2 class="text-center"> 我创建的事件 </h2>
 
