@@ -8,6 +8,7 @@
 
 <p>
   <%= simple_format(@event.description) %>
-
+  <h6> 重要紧急程度 ：<%= @event.important_class %> </h6>
+  <h6> 执行方法 ：<%= @event.executive_method %> </h6>
   <h6> 事件截止日期 ：<%= @event.endtime %> </h6>
 </p>

@@ -55,7 +55,7 @@ class Account::EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :description, :endtime, :is_hidden)
+    params.require(:event).permit(:title, :description, :endtime, :important_class, :executive_method,:is_hidden)
   end
 
 end

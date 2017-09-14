@@ -11,6 +11,8 @@
       <tr>
         <th> # </th>
         <th> 事件名称 </th>
+        <th> 重要紧急程度 </th>
+        <th> 执行方法 </th>
         <th> 执行动作</th>
         <th> 创建时间 </th>
       </tr>
@@ -24,6 +26,8 @@
             <%= render_account_event_status(event) %>
             <%= link_to(event.title, account_event_path(event)) %>
           </td>
+          <td><%= event.important_class %></td>
+          <td><%= event.executive_method %></td>
           <td>
             <% if current_user && current_user == event.user %>
               <%= link_to("编辑", edit_account_event_path(event)) %> |
