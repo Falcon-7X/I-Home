@@ -8,3 +8,8 @@
 
 create_account = User.create([email: 'fengkai@sina.com', password: '111111', password_confirmation: '111111', is_admin: 'true'])
 puts "Admin account created."
+
+create_events = for i in 1..10 do
+  Event.create!([title: "Event no.#{i}", description: "這是用種子建立的第 #{i} 個Public工作", is_hidden: "false", user_id: 1])
+end
+puts "10 Public events created."
