@@ -1,13 +1,7 @@
-<h1> 增加事件 </h1>
+<div class="col-md-4 col-md-offset-4">
+  <h1> 增加事件 </h1>
 
-<%= simple_form_for @event do |f| %>
+  <hr>
 
-<%= f.input :title , label: "名称" %>
-<%= f.input :description, label: "内容" %>
-<%= f.input :endtime, label: "截止时间" %>
-<%= f.input :important_class, label: "重要紧急程度" %>
-<%= f.input :executive_method, label: "执行方法" %>
-<%= f.input :is_hidden, label: "隐藏"  %>
-
-  <%= f.submit "提交", class: "btn btn-danger" %>
-<% end %>
+  <%= render "form" %>
+</div>

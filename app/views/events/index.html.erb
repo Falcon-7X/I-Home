@@ -2,28 +2,34 @@
   <%= link_to("增加一个事件", new_event_path, :class => "btn btn-primary" ) %>
 </div>
 
-<table class="table table-bordered">
-  <thead>
-    <th>#</th>
-    <th>事件名称</th>
-    <th>创建者</th>
-    <th>创建时间</th>
-  </thead>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
 
-  <tbody>
-    <% @events.each do |event| %>
-    <tr>
-      <th>#</th>
-      <td>
-        <%= link_to(event.title, event_path(event)) %>
-      </td>
-      <td>
-        <%= event.user.email %>
-      </td>
-      <td>
-        <%= event.created_at %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <th class="active">#</th>
+        <th class="active">事件名称</th>
+        <th class="active">创建者</th>
+        <th class="active">创建时间</th>
+      </thead>
+
+      <tbody>
+        <% @events.each do |event| %>
+        <tr>
+          <th>#</th>
+          <td>
+            <%= link_to(event.title, event_path(event)) %>
+          </td>
+          <td>
+            <%= event.user.email %>
+          </td>
+          <td>
+            <%= event.created_at %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>
