@@ -4,7 +4,7 @@ sh "ssh-add"
 lock "~> 3.10.1"
 
 set :application, "I-Home"
-set :repo_url, "github.com/fengkaiwater/I-Home.git"
+set :repo_url, "git@github.com/fengkaiwater/I-Home.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
