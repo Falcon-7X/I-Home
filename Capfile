@@ -18,7 +18,6 @@ install_plugin Capistrano::SCM::Git
 require 'capistrano/rails'
 require 'capistrano/passenger'
 
-require 'capistrano/ssh_doctor'
 
 # Include tasks from other gems included in your Gemfile
 #
